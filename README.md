@@ -22,7 +22,7 @@ pip install mediafiregrabber
 import mediafiregrabber
 
 # For Brief Information
-print(mediafire.info(url))
+print(mediafiregrabber.info(url))
 
 # For Finding File Name
 print(mediafiregrabber.name(url))
