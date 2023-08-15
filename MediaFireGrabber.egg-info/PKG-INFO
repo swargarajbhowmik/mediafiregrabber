@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: mediafiregrabber
+Version: 1.0.0
+Summary: Simple Python Package for MediaFire File Download and Information Retrieval
+Home-page: https://github.com/swargarajbhowmik/mediafiregrabber
+Author: Swargaraj Bhowmik
+Author-email: contact@swargarajbhowmik.me
+License: MIT

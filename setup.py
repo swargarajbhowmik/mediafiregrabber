@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="MediaFireGrabber",
+    name="mediafiregrabber",
     version="1.0.0",
     packages=find_packages(),
     entry_points={
