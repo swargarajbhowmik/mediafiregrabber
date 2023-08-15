@@ -1,4 +1,4 @@
-# MediaFireGrabber
+# <img src="https://seeklogo.com/images/M/mediafire-logo-8057F17F6B-seeklogo.com.png" alt="Mediafire logo" width="50"> MediaFireGrabber (Python Edition)
 A simple Python package that provides an easy-to-use interface for downloading files from MediaFire and retrieving information about them.
 
 ## Features
@@ -10,7 +10,7 @@ A simple Python package that provides an easy-to-use interface for downloading f
 
 You can install MediaFireGrabber using pip:
 
-```
+```bash
 pip install mediafiregrabber
 ```
 
@@ -18,7 +18,7 @@ pip install mediafiregrabber
 
 ### Retrieving File Information
 
-```
+```python
 import mediafiregrabber
 
 # For Brief Information
@@ -44,14 +44,14 @@ print(mediafiregrabber.downloadlink(url))
 ```
 
 ### Download Files
-```
+```python
 import mediafiregrabber
 
 mediafire.download(url)
 ```
 
 ### CLI Usage
-```
+```bash
 $ mediafiregrabber <url1> <url2>...
 ```
 
