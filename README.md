@@ -1,10 +1,10 @@
-# <img src="https://seeklogo.com/images/M/mediafire-logo-8057F17F6B-seeklogo.com.png" alt="Mediafire logo" width="50"> MediaFireGrabber (Python Edition)
-A simple Python package that provides an easy-to-use interface for downloading files from MediaFire and retrieving information about them.
+# <img src="assets/logo.png" alt="Mediafire logo" width="50"> MediaFireGrabber [Now Supporting Both Files & Folders] (Python Edition)
+A simple Python package that provides an easy-to-use interface for downloading files and folders from MediaFire and retrieving information about them.
 
 ## Features
 
-- Download files from MediaFire by providing the file URL.
-- Retrieve information about files, such as name, size, creation date, and more.
+- Download folders and files from MediaFire by providing the folder/file URL.
+- Retrieve information about files & folders, such as file name, owner name, size, creation date, and more.
 
 ## Installation
 
@@ -16,44 +16,53 @@ pip install mediafiregrabber
 
 ## Usage
 
-### Retrieving File Information
+### Full Information Retrieving
 
 ```python
 import mediafiregrabber
 
 # For Brief Information
-print(mediafiregrabber.info(url))
-
-# For Finding File Name
-print(mediafiregrabber.name(url))
-
-# For Finding File Size
-print(mediafiregrabber.size(url))
-
-# For Finding Uploading Date
-print(mediafiregrabber.uploaddate(url))
-
-# For Finding Format of the file to be downloaded (PDF, ZIP, RAR...)
-print(mediafiregrabber.format(url))
-
-# For Finding Uploader's Country
-print(mediafiregrabber.uploadregion(url))
-
-# For Finding Direct Download Link
-print(mediafiregrabber.downloadlink(url))
+print(mediafiregrabber.info(url)) # For Both Files & Folders. 
 ```
 
-### Download Files
+You can also use LoadFilesAndFolders=True as argument to load the files and folders present inside a folder. Default is False.
+
+### Partial Information Retrieving
+
+```python
+# For Finding File Name
+print(mediafiregrabber.name(url))  # Only For Files
+
+# For Finding File Size
+print(mediafiregrabber.size(url)) # Only For Files
+
+# For Finding Uploading Date
+print(mediafiregrabber.uploaddate(url)) # Only For Files
+
+# For Finding Format of the file to be downloaded (PDF, ZIP, RAR...)
+print(mediafiregrabber.format(url)) # Only For Files
+
+# For Finding Uploader's Country
+print(mediafiregrabber.uploadregion(url)) # Only For Files
+
+# For Finding Direct Download Link
+print(mediafiregrabber.downloadlink(url)) # Only For Files
+```
+
+### Download Files or Folders
 ```python
 import mediafiregrabber
 
-mediafire.download(url)
+mediafiregrabber.download(url)
 ```
+
+You can pass save="path" argument along with url too!
 
 ### CLI Usage
 ```bash
-$ mediafiregrabber <url1> <url2>...
+$ mediafiregrabber <fileurl> <folderurl>...
 ```
+Similarly, you can use --path argument to add your download location.
 
 Make sure to replace url with actual URLs as needed.
 
