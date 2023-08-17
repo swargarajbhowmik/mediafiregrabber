@@ -1,4 +1,4 @@
-# <img src="assets/logo.png" alt="Mediafire logo" width="50"> MediaFireGrabber [Now Supporting Both Files & Folders] (Python Edition)
+# <img src="https://seeklogo.com/images/M/mediafire-logo-8057F17F6B-seeklogo.com.png" alt="Mediafire logo" width="50"> MediaFireGrabber [Now Supporting Both Files & Folders] (Python Edition)
 A simple Python package that provides an easy-to-use interface for downloading files and folders from MediaFire and retrieving information about them.
 
 ## Features

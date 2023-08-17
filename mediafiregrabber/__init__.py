@@ -237,6 +237,7 @@ def info(url, LoadFilesAndFolders=False):
 def download(url, save="./"):
     if not os.path.exists(save):
         os.makedirs(save)
+        print(f'Creating {save}')
     os.chdir(save)
     
     if "mediafire.com/folder/" in url:
@@ -245,18 +246,20 @@ def download(url, save="./"):
         if matches:
             folderid = matches.group(2)
             foldername = matches.group(3)
-
+            print(f'Grabbing Folders from {url}')
             response = requests.get(f"https://www.mediafire.com/api/1.4/folder/get_info.php?folder_key={folderid}&response_format=json")
             if response.status_code == 200:
                 json_content = response.json()
                 downloaddir = json_content['response']['folder_info']['name'].strip()
 
             if not os.path.exists(downloaddir):
+                print(f'Creating {downloaddir}')
                 os.makedirs(downloaddir)
             os.chdir(downloaddir)
 
             filesqueue = {}
 
+            
             async def fetch_folder_content(session, folderkey, name, parent_path=""):
                 requrl = f"https://www.mediafire.com/api/1.4/folder/get_content.php?r=megafire&content_type=folders&filter=all&order_by=name&order_direction=asc&chunk=1&version=1.5&folder_key={folderkey}&response_format=json"
                 async with session.get(requrl) as response:
@@ -268,7 +271,10 @@ def download(url, save="./"):
                             folder_path = f"{parent_path}/{folder['name']}" if parent_path else folder['name']
 
                             if not os.path.exists(folder_path):
+                                print(f"{folder_path} doesn't exists. Creating New")
                                 os.makedirs(folder_path)
+
+                            print(f'Searching For Files in {folder_path}')
 
                             task = asyncio.create_task(fetch_folder_content(session, folder['folderkey'], folder['name'], folder_path))
                             tasks.append(task)
@@ -299,6 +305,10 @@ def download(url, save="./"):
 
         for path,url in filesqueue.items():
             download(url, save=path)
+        if save=="./":
+            os.chdir("../")
+        else:
+            os.chdir("../../")
     else:
         response = requests.get(url)
         if response.status_code == 200:
@@ -327,6 +337,8 @@ def download(url, save="./"):
                         file.write(chunk)
                         bar.update(len(chunk))
                 print("")
+                if save!="./":
+                    os.chdir("../")
             else:
                 print(f"[{response.status_code}] Failed to Process The Direct Download Link {download_link}")
         else:
